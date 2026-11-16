@@ -1,0 +1,13 @@
+{
+  "description": "container at 85% of a 256 MiB cgroup limit on a host with plenty of memory",
+  "probe": {
+    "containerized": true,
+    "containerMemory": { "limitBytes": 268435456, "usageBytes": 228170137 },
+    "memory": { "totalBytes": 17179869184, "availableBytes": 15000000000, "source": "os" }
+  },
+  "expected": {
+    "overall": "warning",
+    "exitCode": 1,
+    "statuses": { "cpu": "healthy", "memory": "warning", "disk:/": "healthy" }
+  }
+}

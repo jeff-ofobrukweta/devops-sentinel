@@ -1,0 +1,13 @@
+{
+  "description": "every collector fails",
+  "probe": {
+    "cpu": [[]],
+    "memory": { "error": "vm_stat unavailable" },
+    "disks": { "/": { "error": "EIO: i/o error" } }
+  },
+  "expected": {
+    "overall": "unknown",
+    "exitCode": 3,
+    "statuses": { "cpu": "unknown", "memory": "unknown", "disk:/": "unknown" }
+  }
+}

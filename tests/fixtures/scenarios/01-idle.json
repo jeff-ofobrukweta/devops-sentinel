@@ -1,0 +1,13 @@
+{
+  "description": "idle workstation",
+  "probe": {
+    "cpu": [[{ "idle": 0, "busy": 0 }], [{ "idle": 900, "busy": 100 }]],
+    "memory": { "totalBytes": 17179869184, "availableBytes": 12884901888, "source": "os" },
+    "disks": { "/": { "bsize": 4096, "blocks": 1000000, "bfree": 700000, "bavail": 650000 } }
+  },
+  "expected": {
+    "overall": "healthy",
+    "exitCode": 0,
+    "statuses": { "cpu": "healthy", "memory": "healthy", "disk:/": "healthy" }
+  }
+}

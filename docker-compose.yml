@@ -1,0 +1,23 @@
+services:
+  sentinel:
+    build: .
+    image: devops-sentinel:local
+    # Runs a minimal init (tini) as PID 1 that forwards signals and reaps zombies.
+    init: true
+    restart: unless-stopped
+    command: ["--interval", "10"]
+    environment:
+      SENTINEL_CONFIG: /config/sentinel.json
+      SENTINEL_LOG_LEVEL: info
+    volumes:
+      - ./config/sentinel.example.json:/config/sentinel.json:ro
+    # Resource limits demonstrate cgroup-aware metrics: memory is reported
+    # against the 256 MiB limit, not the host's total memory.
+    mem_limit: 256m
+    cpus: 0.5
+    # Hardening: the app writes nothing to disk and needs no Linux capabilities.
+    read_only: true
+    cap_drop: [ALL]
+    security_opt:
+      - no-new-privileges:true
+    stop_grace_period: 5s

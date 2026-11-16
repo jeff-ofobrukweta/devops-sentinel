@@ -1,0 +1,13 @@
+{
+  "description": "every resource critical (CPU 95%, memory 95%, disk 98.95% after root reserve)",
+  "probe": {
+    "cpu": [[{ "idle": 0, "busy": 0 }], [{ "idle": 50, "busy": 950 }]],
+    "memory": { "totalBytes": 17179869184, "availableBytes": 858993459, "source": "os" },
+    "disks": { "/": { "bsize": 4096, "blocks": 1000000, "bfree": 60000, "bavail": 10000 } }
+  },
+  "expected": {
+    "overall": "critical",
+    "exitCode": 2,
+    "statuses": { "cpu": "critical", "memory": "critical", "disk:/": "critical" }
+  }
+}

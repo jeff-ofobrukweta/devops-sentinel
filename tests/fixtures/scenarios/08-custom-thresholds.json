@@ -1,0 +1,12 @@
+{
+  "description": "10% CPU is critical when thresholds are lowered to 5/8",
+  "args": ["--cpu-warning", "5", "--cpu-critical", "8"],
+  "probe": {
+    "cpu": [[{ "idle": 0, "busy": 0 }], [{ "idle": 900, "busy": 100 }]]
+  },
+  "expected": {
+    "overall": "critical",
+    "exitCode": 2,
+    "statuses": { "cpu": "critical", "memory": "healthy", "disk:/": "healthy" }
+  }
+}

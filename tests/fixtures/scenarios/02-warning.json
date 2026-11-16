@@ -1,0 +1,13 @@
+{
+  "description": "every resource in the warning band (CPU 80%, memory 85%, disk 82%)",
+  "probe": {
+    "cpu": [[{ "idle": 0, "busy": 0 }], [{ "idle": 200, "busy": 800 }]],
+    "memory": { "totalBytes": 17179869184, "availableBytes": 2576980378, "source": "os" },
+    "disks": { "/": { "bsize": 4096, "blocks": 1000000, "bfree": 180000, "bavail": 180000 } }
+  },
+  "expected": {
+    "overall": "warning",
+    "exitCode": 1,
+    "statuses": { "cpu": "warning", "memory": "warning", "disk:/": "warning" }
+  }
+}

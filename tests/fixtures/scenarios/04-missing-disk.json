@@ -1,0 +1,12 @@
+{
+  "description": "configured mount point does not exist",
+  "args": ["--disk-path", "/", "--disk-path", "/mnt/backup"],
+  "probe": {
+    "disks": { "/mnt/backup": { "error": "ENOENT: no such file or directory, statfs '/mnt/backup'" } }
+  },
+  "expected": {
+    "overall": "unknown",
+    "exitCode": 3,
+    "statuses": { "cpu": "healthy", "memory": "healthy", "disk:/": "healthy", "disk:/mnt/backup": "unknown" }
+  }
+}

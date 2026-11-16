@@ -1,0 +1,12 @@
+{
+  "description": "critical CPU while disk cannot be read",
+  "probe": {
+    "cpu": [[{ "idle": 0, "busy": 0 }], [{ "idle": 50, "busy": 950 }]],
+    "disks": { "/": { "error": "EACCES: permission denied" } }
+  },
+  "expected": {
+    "overall": "critical",
+    "exitCode": 2,
+    "statuses": { "cpu": "critical", "memory": "healthy", "disk:/": "unknown" }
+  }
+}

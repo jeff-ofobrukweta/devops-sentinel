@@ -1,0 +1,16 @@
+{
+  "description": "container using 95% of a 0.5 CPU quota while the host's cores are mostly idle",
+  "probe": {
+    "containerized": true,
+    "cpu": [[{ "idle": 0, "busy": 0 }], [{ "idle": 940, "busy": 60 }]],
+    "containerCpu": [
+      { "usageMicros": 0, "limitCpus": 0.5, "takenAtMicros": 0 },
+      { "usageMicros": 475000, "limitCpus": 0.5, "takenAtMicros": 1000000 }
+    ]
+  },
+  "expected": {
+    "overall": "critical",
+    "exitCode": 2,
+    "statuses": { "cpu": "critical", "memory": "healthy", "disk:/": "healthy" }
+  }
+}
